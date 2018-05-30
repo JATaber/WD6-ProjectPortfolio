@@ -1,0 +1,2 @@
+Mike@aol.com|password|Mike Maccurtain|Hello I am Mike. I am a student at Full Sail University.
+Joe@aol.com|password|Joe Zhan|Hello I am Joe. I am also a student at Full Sail University.

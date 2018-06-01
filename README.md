@@ -1,7 +1,7 @@
 # WD6-ProjectPortfolio
 
-##Shopping Cart Demo
+## Shopping Cart Demo
 
-###Install
+### Install
 
 `npm install`

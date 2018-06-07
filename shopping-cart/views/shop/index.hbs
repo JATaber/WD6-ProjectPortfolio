@@ -1,17 +1,19 @@
-{{# each products }}
-    <div class="card-deck">
-        {{#each this  }}
-            <div class="card">
-                <img class="card-img-top img-fluid" src="{{ this.imagePath }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ this.title }}</h5>
-                    <p class="card-text description">{{ this.description }}</p>
+<div class="jumbotron">
+    {{# each products }}
+        <div class="card-deck">
+            {{#each this  }}
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{{ this.imagePath }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ this.title }}</h5>
+                        <p class="card-text description">{{ this.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price float-left">${{ this.price }}</div>
+                        <a href="/shoppingCart/{{this._id}}" class="btn btn-success float-right">Add to Cart</a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <div class="price float-left">${{ this.price }}</div>
-                    <a href="/shoppingCart/{{this._id}}" class="btn btn-success float-right">Add to Cart</a>
-                </div>
-            </div>
-        {{/each}}
-    </div>
-{{/each}}
+            {{/each}}
+        </div>
+    {{/each}}
+</div>

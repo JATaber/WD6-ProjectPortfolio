@@ -64,18 +64,12 @@ router.post('/checkout', function(req, res, next){
     amount: cart.totalPrice * 100,
     currency: "usd",
     source: req.body.stripeToken, // obtained with Stripe.js
-    description: "Charge for WD6i",
-    zipCode: true,
-    billingAddress: true
+    description: "Charge for WD6i"
   }, function(err, charge) {
     if (err) {
       req.flash('error', err.message);
       return res.redirect('/checkout');
     }
-    var order = new Order({
-      user: req.user,
-      cart: cart
-    });
     req.flash('success', 'Checkout Successful!!!');
     req.session.cart = null;
     res.redirect('/');

@@ -11,6 +11,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
+var hbs = require('handlebars');
 
 var index = require('./routes/index');
 var userRoutes = require('./routes/user');
@@ -19,6 +20,10 @@ var app = express();
 
 mongoose.connect('mongodb://localhost:27017/shopping');
 require('./config/passport');
+
+hbs.registerHelper("math", function(value, options){
+  return parseInt(value) * 100;
+});
 
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));

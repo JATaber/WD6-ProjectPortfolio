@@ -6,7 +6,17 @@
             {{errMsg}}
         </div>
         <form action="/checkout" method="POST">
-
+            <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_9ZuWhV8GKjQb3p67CKTHDuWz"
+                    data-amount={{math total '*' 100}},
+                    data-name="WD6i"
+                    data-description="Enter Payment Information"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto">
+            </script>
         </form>
     </div>
 </div>
+<script type="text/javascript" src="https://js.stripe.com/vs/"></script>
+<script type="text/javascript" src="javascripts/checkout.js"></script>

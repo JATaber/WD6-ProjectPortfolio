@@ -1,0 +1,46 @@
+/* .card img {
+    max-height: 150px;
+}*/
+
+body{
+    background-color: #000000;
+    color: #d3d3d3;
+}
+
+.navbar{
+    background-color: #D3D3D3 !important;
+}
+
+.card{
+    background-color: #00627E !important;
+}
+
+.card .description {
+    color: #7f7f7f;
+}
+
+.card-body{
+    background-color: #D3D3D3 !important;
+    color: #000;
+}
+
+.card-footer{
+    color: #d3d3d3;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.card-deck {
+    margin-top: 10px;
+}
+
+.jumbotron{
+    background-color: #3D5C65 !important;
+}
+
+.list-group{
+    color: #000;
+}

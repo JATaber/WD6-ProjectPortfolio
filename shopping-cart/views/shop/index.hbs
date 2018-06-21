@@ -1,0 +1,34 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 offset-md-4 offset-sm-3">
+            <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+                {{successMsg}}
+            </div>
+        </div>
+    </div>
+    {{# each products }}
+        <div class="card-deck">
+            {{#each this  }}
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="{{ this.imagePath }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ this.title }}</h5>
+                        <p class="card-text description">{{ this.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price float-left">${{ this.price }}</div>
+                        <div class="btn-group float-right">
+                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                Add <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="/addWish/{{this._id}}" class="dropdown-item btn btn-success float-right">Add to Wishlist</a>
+                                <a href="/shoppingCart/{{this._id}}" class="dropdown-item btn btn-success float-right">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
+</div>

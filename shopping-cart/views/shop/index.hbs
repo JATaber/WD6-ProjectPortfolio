@@ -17,7 +17,15 @@
                     </div>
                     <div class="card-footer">
                         <div class="price float-left">${{ this.price }}</div>
-                        <a href="/shoppingCart/{{this._id}}" class="btn btn-success float-right">Add to Cart</a>
+                        <div class="btn-group float-right">
+                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                Add <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="/addWish/{{this._id}}" class="dropdown-item btn btn-success float-right">Add to Wishlist</a>
+                                <a href="/shoppingCart/{{this._id}}" class="dropdown-item btn btn-success float-right">Add to Cart</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {{/each}}

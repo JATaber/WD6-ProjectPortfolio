@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Cart = require('../models/cart');
 var Order = require('../models/order');
-
+var Wishlist = require('../models/wishlist');
 var Product = require('../models/product');
 
 /* GET home page. */
@@ -59,6 +59,22 @@ router.get('/shopping-cart', function(req, res, next){
   var cart = new Cart(req.session.cart);
   res.render('shop/shopping-cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
+
+router.get('/addWish/:id', isLoggedIn, function(req, res, next){
+  var productId = req.params.id;
+  var wishlist = new Wishlist(req.session.wishlist ? req.session.wishlist : {});
+  Product.findById(productId, function(err, product){
+    if(err){
+      return res.redirect('/');
+    }
+    wishlist.addWishlistItem(product, product.id);
+    req.session.wishlist = wishlist;
+    console.log(req.session.wishlist);
+    res.redirect('/wishlist');
+  })
+});
+
+router.get('/removeWishlistItem')
 
 router.get('/checkout', isLoggedIn, function(req, res, next){
   if (!req.session.cart) {

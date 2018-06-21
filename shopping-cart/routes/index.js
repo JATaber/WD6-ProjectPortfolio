@@ -74,7 +74,7 @@ router.get('/addWish/:id', isLoggedIn, function(req, res, next){
   })
 });
 
-router.get('removeWish/:id', function(req, res, next){
+router.get('/removeWish/:id', function(req, res, next){
   var productId = req.params.id;
   var wishlist = new Wishlist(req.session.wishlist ? req.session.wishlist : {});
 

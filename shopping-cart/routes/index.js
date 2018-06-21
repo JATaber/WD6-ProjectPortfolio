@@ -74,7 +74,22 @@ router.get('/addWish/:id', isLoggedIn, function(req, res, next){
   })
 });
 
-router.get('/removeWishlistItem')
+router.get('removeWish/:id', function(req, res, next){
+  var productId = req.params.id;
+  var wishlist = new Wishlist(req.session.wishlist ? req.session.wishlist : {});
+
+  wishlist.removeWishlistItem(productId);
+  req.session.wishlist = wishlist;
+  res.redirect('/wishlist');
+});
+
+router.get('/wishlist', isLoggedIn, function(req, res, next){
+  if(!req.session.wishlist){
+    res.render('shop/wishlist', {products:null});
+  }
+  var wishlist = new Wishlist(req.session.wishlist);
+  res.render('shop/wishlist',{products:wishlist.generateWishlistArray()});
+});
 
 router.get('/checkout', isLoggedIn, function(req, res, next){
   if (!req.session.cart) {

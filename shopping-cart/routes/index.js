@@ -88,9 +88,16 @@ router.post('/checkout', isLoggedIn, function(req, res, next){
       req.flash('error', err.message);
       return res.redirect('/checkout');
     }
-    req.flash('success', 'Checkout Successful!!!');
-    req.session.cart = null;
-    res.redirect('/');
+    var order = new Order({
+      user: req.user,
+      cart: cart,
+      paymentId: charge.id
+    });
+    order.save(function(err, result){
+      req.flash('success', 'Checkout Successful!!!');
+      req.session.cart = null;
+      res.redirect('/');
+    });
   });
 });
 
